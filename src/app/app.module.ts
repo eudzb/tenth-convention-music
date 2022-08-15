@@ -1,8 +1,15 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
 
-import { AppComponent } from './app.component';
-import { HomeComponent } from './pages/home/home.component';
+import {AppComponent} from './app.component';
+import {HomeComponent} from './pages/home/home.component';
+import {RouterModule} from '@angular/router';
+import {HttpClientModule} from '@angular/common/http';
+
+const ROUTES = [
+  {path: 'home', component: HomeComponent},
+  {path: '', component: HomeComponent}
+]
 
 @NgModule({
   declarations: [
@@ -10,9 +17,12 @@ import { HomeComponent } from './pages/home/home.component';
     HomeComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    RouterModule.forRoot(ROUTES),
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
