@@ -2,6 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {SpotifyService} from '../../services/spotify.service';
 import {Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
+import {Playlist} from '../../models/Playlist';
 
 @Component({
   selector: 'app-home',
@@ -10,7 +11,7 @@ import {takeUntil} from 'rxjs/operators';
 })
 export class HomeComponent implements OnInit, OnDestroy {
   private stopSubscription$ = new Subject();
-  playlists: any;
+  playlists: Playlist[];
 
   constructor(private spotifyService: SpotifyService) {
   }
@@ -28,7 +29,6 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.spotifyService.getPlaylist('1n9UO9ZN0sSCnW2WRZAtL1')
       .pipe(takeUntil(this.stopSubscription$))
       .subscribe(playlists => {
-        this.playlists = playlists;
         console.warn(playlists);
       })
   }

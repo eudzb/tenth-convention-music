@@ -13,6 +13,10 @@ export class SpotifyService {
   ) {
   }
 
+  getAllPlaylists() {
+    // TODO: retrieve all playlists based on ConventionPlaylistId.json
+  }
+
   getPlaylist(playlistId: string) {
     const url = `${this.spotifyUrl}/playlists/${playlistId}`;
     const headers = new HttpHeaders({
